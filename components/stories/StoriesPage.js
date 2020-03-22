@@ -1,13 +1,16 @@
 import { useEffect, useState, useContext } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import StoriesList from '../../components/stories/StoriesList'
 import RequestLogContext, { isRequestStale } from '../../contexts/RequestLogContext'
+import MessageContext from '../../contexts/MessageContext'
 
-export default function StoriesPage({ dependancy, requestFn }) {
+export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
     const pathName = useRouter().asPath
     const [stories, setStories] = useState([])
     const [loading, setLoading] = useState(true)
-    const { requestLog, logRequest } = useContext(RequestLogContext)
+    const [requestLog, logRequest] = useContext(RequestLogContext)
+    const [, sendMessage] = useContext(MessageContext)
 
     // TODO: Cleanup with { lastRequestTime } = requestLog?.['/']
     const log = requestLog[pathName] || {}
@@ -42,6 +45,10 @@ export default function StoriesPage({ dependancy, requestFn }) {
                 setStories(accumulatedStories)
                 setLoading(false)
             })
+            .catch((err) => {
+                sendMessage('Error retrieving stories')
+                console.error(err)
+            })
     }
 
     function loadMore() {
@@ -50,12 +57,17 @@ export default function StoriesPage({ dependancy, requestFn }) {
     }
 
     return (
-        <main>
-            <h1>The Headlines: {dependancy}</h1>
-            <StoriesList stories={stories}/>
-            {totalResults > stories.length && (
-                <button disabled={loading} onClick={loadMore}>Load more</button>
-            )}
-        </main>
+        <>
+            <Head>
+                <title>{pageTitle} | Just News</title>
+            </Head>
+            <main>
+                <h1>{pageTitle}</h1>
+                <StoriesList stories={stories}/>
+                {totalResults > stories.length && (
+                    <button disabled={loading} onClick={loadMore}>Load more</button>
+                )}
+            </main>
+        </>
     )
 }

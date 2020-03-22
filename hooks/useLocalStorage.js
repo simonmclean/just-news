@@ -15,8 +15,6 @@ export default function useLocalStorage(key, defaultValue) {
                     setValue(cachedValue)
                 }
             })
-            // TODO: Error handling
-            .catch(console.error)
     }, [key])
 
     return [
@@ -25,8 +23,6 @@ export default function useLocalStorage(key, defaultValue) {
             localforage
                 .setItem(key, newValue)
                 .then(setValue)
-                // TODO: Error handling
-                .catch(console.error)
         )
     ]
 }

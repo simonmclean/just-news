@@ -3,18 +3,21 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { getSources } from '../utils/requestUtils.js'
 import useLocalStorage from '../hooks/useLocalStorage'
+import MessageContext from '../contexts/MessageContext'
 import SourcesContext from '../contexts/SourcesContext'
 import UserSettingsContext, {
     userSettingsReducer,
     userDefaults,
     setTheme,
 } from '../contexts/UserSettingsContext'
-import Header from '../components/header/Header'
+import Navigation from '../components/header/Navigation'
 import RequestLogContext, { requestLogReducer } from '../contexts/RequestLogContext'
+import Message from '../components/message/Message'
 
 export default function MyApp({ Component }) {
     const [sources, setSources] = useState([])
     const [requestLog, setRequestLog] = useState({})
+    const [message, sendMessage] = useState()
     const [userSettings, setUserSettings] = useLocalStorage('userSettings', userDefaults)
 
     function setUserSetting(key, value) {
@@ -28,7 +31,12 @@ export default function MyApp({ Component }) {
     }
 
     useEffect(() => {
-        getSources().then(setSources)
+        getSources()
+            .then(setSources)
+            .catch((err) => {
+                sendMessage('Error retrieving news sources')
+                console.error(err)
+            })
     }, [])
 
     useEffect(() => {
@@ -47,10 +55,13 @@ export default function MyApp({ Component }) {
             </Head>
             {userSettings && (
                 <SourcesContext.Provider value={sources}>
-                    <RequestLogContext.Provider value={{requestLog, logRequest}}>
+                    <RequestLogContext.Provider value={[requestLog, logRequest]}>
                         <UserSettingsContext.Provider value={{...userSettings, setUserSetting}}>
-                            {!isSettingsRoute && <Header />}
-                            <Component />
+                                {!isSettingsRoute && <Navigation />}
+                                <MessageContext.Provider value={[message, sendMessage]}>
+                                    <Message/>
+                                    <Component />
+                                </MessageContext.Provider>
                         </UserSettingsContext.Provider>
                     </RequestLogContext.Provider>
                 </SourcesContext.Provider>

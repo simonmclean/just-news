@@ -23,7 +23,6 @@ export function getSources() {
         language: 'en',
     }
     // TODO: Convert to async func
-    // TODO: Error handling
     return fetch(getURL('sources', params))
         .then(response => response.json())
         .then(({ sources }) => sources)
@@ -31,7 +30,6 @@ export function getSources() {
 
 function getStories(params) {
     // TODO: Convert to async func
-    // TODO: Error handling
     return fetch(getURL('top-headlines', params))
         .then(response => response.json())
         .then(({ articles, totalResults }) => ({
