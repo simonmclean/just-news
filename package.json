@@ -8,7 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "lazy-image": "git+https://github.com/simonmclean/lazy-img.git",
+    "lit-element": "^2.3.1",
+    "localforage": "^1.7.3",
     "next": "9.3.1",
+    "ramda": "^0.27.0",
     "react": "16.13.0",
     "react-dom": "16.13.0"
   }
