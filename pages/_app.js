@@ -57,9 +57,9 @@ export default function MyApp({ Component }) {
                 <SourcesContext.Provider value={sources}>
                     <RequestLogContext.Provider value={[requestLog, logRequest]}>
                         <UserSettingsContext.Provider value={{...userSettings, setUserSetting}}>
-                                {!isSettingsRoute && <Navigation />}
                                 <MessageContext.Provider value={[message, sendMessage]}>
                                     <Message/>
+                                    {!isSettingsRoute && <Navigation />}
                                     <Component />
                                 </MessageContext.Provider>
                         </UserSettingsContext.Provider>
