@@ -47,6 +47,7 @@ export default function MyApp({ Component }) {
 
     const isSettingsRoute = useRouter().route === '/settings'
 
+    // TODO: Reduce all the context providers
     return (
         <>
             <Head>
