@@ -31,6 +31,7 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
 
     function fetchData(page = 1) {
         requestFn(dependancy, page)
+            .fire()
             .then(response => {
                 const accumulatedStories = page > 1
                     ? [...stories, ...response.stories]

@@ -1,10 +1,11 @@
-import { memoizeWith } from 'ramda'
+import { isoAbortController } from '../utils/functionUtils'
 
+// TODO: Remove
 const API_KEY = process.env.newsApiKey
 
 const PAGE_SIZE = 10
 
-function getURL(endpoint, params) {
+function buildURL(endpoint, params) {
     return 'https://newsapi.org/v2/'
         + endpoint
         + '?apiKey='
@@ -18,24 +19,35 @@ function objectToUrlParams(obj) {
     ), '')
 }
 
+function withAbort(url, callback) {
+    const { signal, abort } = new isoAbortController()
+    return {
+        fire: () => fetch(url, { signal })
+            .then(callback),
+        abort,
+    }
+}
+
 export function getSources() {
     const params = {
         language: 'en',
     }
-    // TODO: Convert to async func
-    return fetch(getURL('sources', params))
-        .then(response => response.json())
-        .then(({ sources }) => sources)
+    return withAbort(
+        buildURL('sources', params),
+        response => response.json()
+            .then(({ sources }) => sources)
+    )
 }
 
 function getStories(params) {
-    // TODO: Convert to async func
-    return fetch(getURL('top-headlines', params))
-        .then(response => response.json())
-        .then(({ articles, totalResults }) => ({
-            stories: articles,
-            totalResults,
-        }))
+    return withAbort(
+        buildURL('top-headlines', params),
+        response => response.json()
+            .then(({ articles, totalResults }) => ({
+                stories: articles,
+                totalResults,
+            }))
+    )
 }
 
 export function getStoriesBySource(sources, page = 0) {

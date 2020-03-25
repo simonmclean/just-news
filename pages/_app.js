@@ -32,6 +32,7 @@ export default function MyApp({ Component }) {
 
     useEffect(() => {
         getSources()
+            .fire()
             .then(setSources)
             .catch((err) => {
                 sendMessage('Error retrieving news sources')
