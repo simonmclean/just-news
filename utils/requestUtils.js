@@ -1,5 +1,3 @@
-import { isoAbortController } from '../utils/functionUtils'
-
 // TODO: Remove
 const API_KEY = process.env.newsApiKey
 
@@ -39,8 +37,9 @@ function objectToUrlParams(obj) {
  * @param callback {function}
  * @returns {Object} - with "fire" and "abort" methods
  */
+// TODO: Return an array, to allow clean aliasing
 function withAbort(url, callback) {
-    const { signal, abort } = new isoAbortController()
+    const { signal, abort } = new AbortController()
     return {
         fire: () => fetch(url, { signal })
             .then(callback),
