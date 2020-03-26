@@ -5,4 +5,5 @@ module.exports = withOffline({
     env: {
         newsApiKey: process.env.NEWS_API_KEY
     },
+    target: 'serverless',
 });
