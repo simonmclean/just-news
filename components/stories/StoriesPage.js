@@ -31,7 +31,7 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
         } else {
             setStories(log.data)
         }
-    }, [dependancy])
+    }, [fetchData, dependancy, prevDependacy, lastRequestTime, log.data])
 
     useScrollPos((scrollPos) => {
         const atBottom = (scrollPos + window.innerHeight) >= document.body.scrollHeight
@@ -39,7 +39,7 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
         if (atBottom && isMore && !loading) {
             loadMore()
         }
-    }, [totalResults, stories.length, loading])
+    }, [loadMore, totalResults, stories.length, loading])
 
     function fetchData(page = 1) {
         requestFn(dependancy, page)

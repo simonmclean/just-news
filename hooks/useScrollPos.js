@@ -5,16 +5,17 @@ function getScrollPos() {
 }
 
 export default function useScrollPos(callback, deps) {
-    function handleScroll() {
-        callback(getScrollPos())
-    }
-
     useEffect(() => {
+        function handleScroll() {
+            callback(getScrollPos())
+        }
+
         window.addEventListener(
             'scroll',
             handleScroll,
             { passive: true }
         )
+
         return () => window.removeEventListener('scroll', handleScroll)
-    }, deps)
+    }, [...deps, callback])
 }
