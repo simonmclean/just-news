@@ -3,17 +3,17 @@ import localforage from 'localforage'
 
 export default function useLocalStorage(key, defaultValue) {
     if (!key) throw new Error('useLocalStorage expects a key')
+    if (!defaultValue) throw new Error('useLocalStorage expects a defaultValue')
 
     const [value, setValue] = useState(null)
 
     useEffect(() => {
         localforage.getItem(key)
             .then((cachedValue) => {
-                if (!cachedValue && defaultValue) {
+                if (!cachedValue) {
                     localforage.setItem(key, defaultValue)
-                } else {
-                    setValue(cachedValue)
                 }
+                setValue(cachedValue ? cachedValue : defaultValue)
             })
     }, [key])
 
