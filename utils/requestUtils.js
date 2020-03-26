@@ -5,6 +5,19 @@ const API_KEY = process.env.newsApiKey
 
 const PAGE_SIZE = 10
 
+const ENDPOINTS = {
+    SOURCES: 'sources',
+    HEADLINES: 'top-headlines',
+}
+
+/**
+ * Takes an endpoint name, and an params obj
+ * and constructs a complete URL for an API call
+ *
+ * @param endpoint {@see ENDPOINTS}
+ * @param params {Object} - query params in key value pairs
+ * @returns {string} - URL
+ */
 function buildURL(endpoint, params) {
     return 'https://newsapi.org/v2/'
         + endpoint
@@ -19,6 +32,13 @@ function objectToUrlParams(obj) {
     ), '')
 }
 
+/**
+ * Wrapper for fetch with AbortController
+ *
+ * @param url {string}
+ * @param callback {function}
+ * @returns {Object} - with "fire" and "abort" methods
+ */
 function withAbort(url, callback) {
     const { signal, abort } = new isoAbortController()
     return {
@@ -33,7 +53,7 @@ export function getSources() {
         language: 'en',
     }
     return withAbort(
-        buildURL('sources', params),
+        buildURL(ENDPOINTS.SOURCES, params),
         response => response.json()
             .then(({ sources }) => sources)
     )
@@ -41,7 +61,7 @@ export function getSources() {
 
 function getStories(params) {
     return withAbort(
-        buildURL('top-headlines', params),
+        buildURL(ENDPOINTS.HEADLINES, params),
         response => response.json()
             .then(({ articles, totalResults }) => ({
                 stories: articles,
