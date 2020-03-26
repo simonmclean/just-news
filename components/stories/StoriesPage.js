@@ -4,7 +4,10 @@ import Head from 'next/head'
 import StoriesList from '../../components/stories/StoriesList'
 import RequestLogContext, { isRequestStale } from '../../contexts/RequestLogContext'
 import MessageContext from '../../contexts/MessageContext'
+import useScrollPos from '../../hooks/useScrollPos'
 
+// TODO: I'm not using requestFn properly...
+// The function should be fired to expose the "fire" and "abort" functions
 export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
     const pathName = useRouter().asPath
     const [stories, setStories] = useState([])
@@ -21,6 +24,7 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
         totalResults,
     } = log
 
+    // TODO: Return cleanup
     useEffect(() => {
         if (isRequestStale(lastRequestTime, dependancy, prevDependacy)) {
             fetchData()
@@ -28,6 +32,14 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
             setStories(log.data)
         }
     }, [dependancy])
+
+    useScrollPos((scrollPos) => {
+        const atBottom = (scrollPos + window.innerHeight) >= document.body.scrollHeight
+        const isMore = totalResults > stories.length
+        if (atBottom && isMore && !loading) {
+            loadMore()
+        }
+    }, [totalResults, stories.length, loading])
 
     function fetchData(page = 1) {
         requestFn(dependancy, page)
@@ -65,9 +77,7 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
             <main>
                 <h1>{pageTitle}</h1>
                 <StoriesList stories={stories}/>
-                {totalResults > stories.length && (
-                    <button disabled={loading} onClick={loadMore}>Load more</button>
-                )}
+                {loading && <p>Loading stories…</p>}
             </main>
         </>
     )
