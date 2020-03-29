@@ -1,8 +1,8 @@
 export function isoAbortController() {
-    return typeof window !== 'undefined'
+    return typeof window !== "undefined"
         ? new AbortController()
         : {
-            abort: () => {},
-            signal: {},
-        }
+              abort: () => {},
+              signal: {},
+          };
 }

@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "npx eslint components/** hooks/** contexts/** utils/** pages/**"
+        "lint": "eslint '{components,hooks,contexts,utils,pages}/**/*.js'",
+        "format": "prettier '{components,hooks,contexts,utils,pages}/**/*.js' --write"
     },
     "dependencies": {
         "lazy-image": "git+https://github.com/simonmclean/lazy-img.git",
@@ -22,6 +23,7 @@
         "dotenv": "^8.2.0",
         "eslint": "^6.8.0",
         "eslint-plugin-react": "^7.19.0",
-        "eslint-plugin-react-hooks": "^3.0.0"
+        "eslint-plugin-react-hooks": "^3.0.0",
+        "prettier": "2.0.2"
     }
 }

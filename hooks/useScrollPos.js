@@ -1,21 +1,17 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
 function getScrollPos() {
-    return window.scrollY
+    return window.scrollY;
 }
 
 export default function useScrollPos(callback, deps) {
     useEffect(() => {
         function handleScroll() {
-            callback(getScrollPos())
+            callback(getScrollPos());
         }
 
-        window.addEventListener(
-            'scroll',
-            handleScroll,
-            { passive: true }
-        )
+        window.addEventListener("scroll", handleScroll, { passive: true });
 
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [deps, callback])
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [deps, callback]);
 }

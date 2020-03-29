@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import { getStoriesBySource } from '../utils/requestUtils'
-import UserSettingsContext from '../contexts/UserSettingsContext'
-import StoriesPage from '../components/stories/StoriesPage'
+import React, { useContext } from "react";
+import { getStoriesBySource } from "../utils/requestUtils";
+import UserSettingsContext from "../contexts/UserSettingsContext";
+import StoriesPage from "../components/stories/StoriesPage";
 
 export default function HomePage() {
-    const { preferredSources } = useContext(UserSettingsContext)
+    const { preferredSources } = useContext(UserSettingsContext);
 
     return (
         <StoriesPage
@@ -12,5 +12,5 @@ export default function HomePage() {
             dependancy={preferredSources}
             requestFn={getStoriesBySource}
         />
-    )
+    );
 }

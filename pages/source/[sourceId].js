@@ -1,10 +1,10 @@
-import React from 'react'
-import { useRouter } from 'next/router'
-import StoriesPage from '../../components/stories/StoriesPage'
-import { getStoriesBySource } from '../../utils/requestUtils'
+import React from "react";
+import { useRouter } from "next/router";
+import StoriesPage from "../../components/stories/StoriesPage";
+import { getStoriesBySource } from "../../utils/requestUtils";
 
 export default function SourceStoriesPage() {
-    const { sourceId } = useRouter().query
+    const { sourceId } = useRouter().query;
 
     return (
         <StoriesPage
@@ -12,5 +12,5 @@ export default function SourceStoriesPage() {
             dependancy={[sourceId]}
             requestFn={getStoriesBySource}
         />
-    )
+    );
 }

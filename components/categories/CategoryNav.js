@@ -1,15 +1,15 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 const CATEGORIES = Object.freeze([
-    'general',
-    'business',
-    'science',
-    'technology',
-    'entertainment',
-    'sports',
-    'health',
-])
+    "general",
+    "business",
+    "science",
+    "technology",
+    "entertainment",
+    "sports",
+    "health",
+]);
 
 export default function CategoryNav() {
     return (
@@ -20,17 +20,17 @@ export default function CategoryNav() {
                         <a>My News</a>
                     </Link>
                 </li>
-                {CATEGORIES.map(category =>
+                {CATEGORIES.map((category) => (
                     <li key={category}>
                         <Link
-                            href='/category/[categoryId]'
+                            href="/category/[categoryId]"
                             as={`/category/${category}`}
                         >
                             <a>{category}</a>
                         </Link>
                     </li>
-                )}
+                ))}
             </ul>
         </nav>
-    )
+    );
 }

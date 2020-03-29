@@ -1,7 +1,7 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
-const secureURL = url => url.replace('http://', 'https://')
+const secureURL = (url) => url.replace("http://", "https://");
 
 export default function StoryCard({ story, showImage }) {
     return (
@@ -13,14 +13,17 @@ export default function StoryCard({ story, showImage }) {
             )}
             <header>
                 <cite>
-                    <Link href='/source/[sourceId]' as={`/source/${story.author}`}>
+                    <Link
+                        href="/source/[sourceId]"
+                        as={`/source/${story.author}`}
+                    >
                         <a>{story.source.name}</a>
                     </Link>
                 </cite>
                 <a
                     href={secureURL(story.url)}
-                    target='_blank'
-                    rel='noopener noreferrer'
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
                     {story.title}
                 </a>
@@ -32,5 +35,5 @@ export default function StoryCard({ story, showImage }) {
                 <time>{story.publishedAt}</time>
             </footer>
         </article>
-    )
+    );
 }

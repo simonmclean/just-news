@@ -1,10 +1,12 @@
-import React, { useContext } from 'react'
-import UserSettingsContext, { SETTINGS } from '../../contexts/UserSettingsContext'
+import React, { useContext } from "react";
+import UserSettingsContext, {
+    SETTINGS,
+} from "../../contexts/UserSettingsContext";
 
 export default function ImagesToggle() {
-    const { showImages, setUserSetting } = useContext(UserSettingsContext)
+    const { showImages, setUserSetting } = useContext(UserSettingsContext);
 
-    const onChange = () => setUserSetting(SETTINGS.SHOW_IMAGES, !showImages)
+    const onChange = () => setUserSetting(SETTINGS.SHOW_IMAGES, !showImages);
 
     return (
         <>
@@ -17,8 +19,9 @@ export default function ImagesToggle() {
                 Show Images
             </label>
             <small>
-                Warning: Images are not optimised for mobile. Don&apos;t enable this feature if data usage is a concern.
+                Warning: Images are not optimised for mobile. Don&apos;t enable
+                this feature if data usage is a concern.
             </small>
         </>
-    )
+    );
 }

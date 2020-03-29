@@ -1,10 +1,10 @@
-import React from 'react'
-import { useRouter } from 'next/router'
-import { getStoriesByCategory } from '../../utils/requestUtils'
-import StoriesPage from '../../components/stories/StoriesPage'
+import React from "react";
+import { useRouter } from "next/router";
+import { getStoriesByCategory } from "../../utils/requestUtils";
+import StoriesPage from "../../components/stories/StoriesPage";
 
 export default function CategoryStoriesPage() {
-    const { categoryId } = useRouter().query
+    const { categoryId } = useRouter().query;
 
     return (
         <StoriesPage
@@ -12,5 +12,5 @@ export default function CategoryStoriesPage() {
             dependancy={categoryId}
             requestFn={getStoriesByCategory}
         />
-    )
+    );
 }
