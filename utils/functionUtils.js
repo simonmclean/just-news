@@ -6,3 +6,8 @@ export function isoAbortController() {
               signal: {},
           };
 }
+
+export function upperFirst(str) {
+    const [firstLetter, ...rest] = str;
+    return [firstLetter.toUpperCase(), ...rest].join('')
+}

@@ -1,0 +1,34 @@
+.card {
+    border: 1px solid var(--grey);
+    border-radius: 6px;
+    padding: var(--spacer);
+}
+
+.title {
+    font-size: 1rem;
+    margin: 1em 0;
+}
+
+.title a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.citeLink,
+.dateTime {
+    font-size: var(--font-size-small);
+}
+
+.citeLink {
+    text-decoration: none;
+    font-style: normal;
+    margin-right: var(--spacer);
+}
+
+.dateTime {
+    text-transform: capitalize;
+}
+
+.description {
+    font-size: var(--font-size-small);
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import StoriesList from "../../components/stories/StoriesList";
+import StoriesList from "./StoriesList/StoriesList";
 import RequestLogContext, {
     isRequestStale,
 } from "../../contexts/RequestLogContext";

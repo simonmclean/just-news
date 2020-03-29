@@ -1,3 +1,7 @@
+import { tap, pipe, splitAt, pair, path, apply } from 'ramda'
+import { formatRelative, parseISO } from 'date-fns'
+import { upperFirst } from './functionUtils';
+
 // TODO: Remove
 const API_KEY = process.env.newsApiKey;
 
@@ -33,6 +37,28 @@ function objectToUrlParams(obj) {
     );
 }
 
+/**
+ * Takes a story, grabs the "publishedAt" property and converts that
+ * to a human readable relative time format. e.g. "Today at 5:00pm"
+ *
+ * @param story {Object}
+ * @returns {String}
+ */
+const getRelativeTime = pipe(
+    path(['publishedAt']),
+    parseISO,
+    pair(Date.now()),
+    apply(formatRelative),
+    upperFirst,
+)
+
+function normalizeStory(story) {
+    return {
+        ...story,
+        relativeTime: getRelativeTime(story)
+    }
+}
+
 // TODO: Convert to async
 export function getSources() {
     const params = {
@@ -48,7 +74,7 @@ function getStories(params) {
     return fetch(buildURL(ENDPOINTS.HEADLINES, params))
         .then((response) => response.json())
         .then(({ articles, totalResults }) => ({
-            stories: articles,
+            stories: articles.map(normalizeStory),
             totalResults,
         }));
 }

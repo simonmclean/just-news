@@ -27,6 +27,9 @@ import Message from "../components/message/Message";
 // Utils
 import { getSources } from "../utils/requestUtils.js";
 
+// CSS
+import '../style/app.css';
+
 export default function MyApp({ Component }) {
     const [sources, setSources] = useState([]);
     const [requestLog, setRequestLog] = useState({});

@@ -1,0 +1,9 @@
+.list {
+    list-style: none;
+    margin: 0;
+    padding: var(--spacer);
+}
+
+.listItem + .listItem {
+    margin-top: var(--spacer);
+}
