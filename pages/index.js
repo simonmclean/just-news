@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { getStoriesBySource } from '../utils/requestUtils'
 import UserSettingsContext from '../contexts/UserSettingsContext'
 import StoriesPage from '../components/stories/StoriesPage'
