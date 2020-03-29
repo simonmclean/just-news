@@ -30,43 +30,24 @@ function objectToUrlParams(obj) {
     ), '')
 }
 
-/**
- * Wrapper for fetch with AbortController
- *
- * @param url {string}
- * @param callback {function}
- * @returns {Object} - with "fire" and "abort" methods
- */
-// TODO: Return an array, to allow clean aliasing
-function withAbort(url, callback) {
-    const { signal, abort } = new AbortController()
-    return {
-        fire: () => fetch(url, { signal })
-            .then(callback),
-        abort,
-    }
-}
-
+// TODO: Convert to async
 export function getSources() {
     const params = {
         language: 'en',
     }
-    return withAbort(
-        buildURL(ENDPOINTS.SOURCES, params),
-        response => response.json()
-            .then(({ sources }) => sources)
-    )
+    return fetch(buildURL(ENDPOINTS.SOURCES, params))
+        .then(response => response.json())
+        .then(({ sources }) => sources)
 }
 
+// TODO: Convert to async
 function getStories(params) {
-    return withAbort(
-        buildURL(ENDPOINTS.HEADLINES, params),
-        response => response.json()
-            .then(({ articles, totalResults }) => ({
-                stories: articles,
-                totalResults,
-            }))
-    )
+    return fetch(buildURL(ENDPOINTS.HEADLINES, params))
+        .then(response => response.json())
+        .then(({ articles, totalResults }) => ({
+            stories: articles,
+            totalResults,
+        }))
 }
 
 export function getStoriesBySource(sources, page = 0) {

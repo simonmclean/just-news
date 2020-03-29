@@ -11,8 +11,6 @@ import RequestLogContext, { isRequestStale } from '../../contexts/RequestLogCont
 import MessageContext from '../../contexts/MessageContext'
 import useScrollPos from '../../hooks/useScrollPos'
 
-// TODO: I'm not using requestFn properly...
-// The function should be fired to expose the "fire" and "abort" functions
 export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
     const pathName = useRouter().asPath
     const [stories, setStories] = useState([])
@@ -20,7 +18,7 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
     const [requestLog, logRequest] = useContext(RequestLogContext)
     const [, sendMessage] = useContext(MessageContext)
 
-    // TODO: Cleanup with { lastRequestTime } = requestLog?.['/']
+    // TODO: Maybe just use log.thing for clarity, instead of destructuring?
     const log = requestLog[pathName] || {}
     const {
         lastRequestTime,
@@ -47,33 +45,33 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
     }, [loadMore, totalResults, stories.length, loading])
 
     const fetchData = useCallback(
-        (page = 1) => requestFn(dependancy, page)
-            .fire()
-            .then(response => {
-                const accumulatedStories = page > 1
-                    ? [...stories, ...response.stories]
-                    : response.stories
-                logRequest({
-                    route: pathName,
-                    dependancies: dependancy,
-                    data: accumulatedStories,
-                    totalResults: response.totalResults,
-                    page,
+        (page = 1) => {
+            requestFn(dependancy, page)
+                .then(response => {
+                    const accumulatedStories = page > 1
+                        ? [...stories, ...response.stories]
+                        : response.stories
+                    logRequest({
+                        route: pathName,
+                        dependancies: dependancy,
+                        data: accumulatedStories,
+                        totalResults: response.totalResults,
+                        page,
+                    })
+                    setStories(accumulatedStories)
+                    setLoading(false)
                 })
-                setStories(accumulatedStories)
-                setLoading(false)
-            })
-            .catch((err) => {
-                sendMessage('Error retrieving stories')
-                console.error(err)
-            })
-         , [
-             dependancy,
-             logRequest,
-             pathName,
-             requestFn,
-             sendMessage,
-             stories
+                .catch((err) => {
+                    sendMessage('Error retrieving stories')
+                    console.error(err)
+                })
+        }, [
+            dependancy,
+            logRequest,
+            pathName,
+            requestFn,
+            sendMessage,
+            stories
         ]
     )
 
