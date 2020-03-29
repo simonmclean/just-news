@@ -9,8 +9,8 @@ export default function SourceStoriesPage() {
     return (
         <StoriesPage
             pageTitle={`The Headlines: ${sourceId}`}
-            dependancy={[sourceId]}
-            requestFn={getStoriesBySource}
+            pageDeps={[sourceId]}
+            fetchData={getStoriesBySource}
         />
     );
 }

@@ -1,8 +1,14 @@
+// React
 import React, { useState, useEffect } from "react";
+
+// Next
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { getSources } from "../utils/requestUtils.js";
+
+// Custom hooks
 import useLocalStorage from "../hooks/useLocalStorage";
+
+// Contexts
 import MessageContext from "../contexts/MessageContext";
 import SourcesContext from "../contexts/SourcesContext";
 import UserSettingsContext, {
@@ -10,11 +16,16 @@ import UserSettingsContext, {
     userDefaults,
     setTheme,
 } from "../contexts/UserSettingsContext";
-import Navigation from "../components/header/Navigation";
 import RequestLogContext, {
     requestLogReducer,
 } from "../contexts/RequestLogContext";
+
+// Components
+import Navigation from "../components/header/Navigation";
 import Message from "../components/message/Message";
+
+// Utils
+import { getSources } from "../utils/requestUtils.js";
 
 export default function MyApp({ Component }) {
     const [sources, setSources] = useState([]);

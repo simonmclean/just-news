@@ -10,8 +10,6 @@ const normalizeStr = pipe((str) => str.substring(0, 10), trim, toLower);
 const generateKey = ({ source, title, publishedAt }) =>
     `${source.id}-${normalizeStr(title)}-${publishedAt}`;
 
-// TODO: Infinite scroll
-
 export default function StoriesList({ stories }) {
     const showImages = useContext(UserSettingsContext)[SETTINGS.SHOW_IMAGES];
 

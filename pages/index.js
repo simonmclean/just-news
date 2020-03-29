@@ -9,8 +9,8 @@ export default function HomePage() {
     return (
         <StoriesPage
             pageTitle="The Headlines"
-            dependancy={preferredSources}
-            requestFn={getStoriesBySource}
+            pageDeps={preferredSources}
+            fetchData={getStoriesBySource}
         />
     );
 }

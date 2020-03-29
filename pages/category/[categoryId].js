@@ -9,8 +9,8 @@ export default function CategoryStoriesPage() {
     return (
         <StoriesPage
             pageTitle={`The Headlines: ${categoryId}`}
-            dependancy={categoryId}
-            requestFn={getStoriesByCategory}
+            pageDeps={categoryId}
+            fetchData={getStoriesByCategory}
         />
     );
 }

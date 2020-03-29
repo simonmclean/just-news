@@ -8,7 +8,7 @@ import RequestLogContext, {
 import MessageContext from "../../contexts/MessageContext";
 import useScrollPos from "../../hooks/useScrollPos";
 
-export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
+export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
     const pathName = useRouter().asPath;
     const [stories, setStories] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -26,12 +26,12 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
 
     // TODO: Return cleanup
     useEffect(() => {
-        if (isRequestStale(lastRequestTime, dependancy, prevDependacy)) {
-            fetchData();
+        if (isRequestStale(lastRequestTime, pageDeps, prevDependacy)) {
+            fetchDataHandler();
         } else {
             setStories(log.data);
         }
-    }, [fetchData, dependancy, prevDependacy, lastRequestTime, log.data]);
+    }, [fetchDataHandler, pageDeps, prevDependacy, lastRequestTime, log.data]);
 
     useScrollPos(
         (scrollPos) => {
@@ -45,9 +45,9 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
         [loadMore, totalResults, stories.length, loading]
     );
 
-    const fetchData = useCallback(
+    const fetchDataHandler = useCallback(
         (page = 1) => {
-            requestFn(dependancy, page)
+            fetchData(pageDeps, page)
                 .then((response) => {
                     const accumulatedStories =
                         page > 1
@@ -55,7 +55,7 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
                             : response.stories;
                     logRequest({
                         route: pathName,
-                        dependancies: dependancy,
+                        dependancies: pageDeps,
                         data: accumulatedStories,
                         totalResults: response.totalResults,
                         page,
@@ -68,12 +68,12 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
                     console.error(err);
                 });
         },
-        [dependancy, logRequest, pathName, requestFn, sendMessage, stories]
+        [pageDeps, logRequest, pathName, fetchData, sendMessage, stories]
     );
 
     function loadMore() {
         setLoading(true);
-        fetchData(currentPage + 1);
+        fetchDataHandler(currentPage + 1);
     }
 
     return (
