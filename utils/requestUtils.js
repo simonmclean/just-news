@@ -1,6 +1,6 @@
-import { tap, pipe, splitAt, pair, path, apply } from 'ramda'
-import { formatRelative, parseISO } from 'date-fns'
-import { upperFirst } from './functionUtils';
+import { pipe, pair, path, apply } from "ramda";
+import { formatRelative, parseISO } from "date-fns";
+import { upperFirst } from "./functionUtils";
 
 // TODO: Remove
 const API_KEY = process.env.newsApiKey;
@@ -45,18 +45,18 @@ function objectToUrlParams(obj) {
  * @returns {String}
  */
 const getRelativeTime = pipe(
-    path(['publishedAt']),
+    path(["publishedAt"]),
     parseISO,
     pair(Date.now()),
     apply(formatRelative),
-    upperFirst,
-)
+    upperFirst
+);
 
 function normalizeStory(story) {
     return {
         ...story,
-        relativeTime: getRelativeTime(story)
-    }
+        relativeTime: getRelativeTime(story),
+    };
 }
 
 // TODO: Convert to async

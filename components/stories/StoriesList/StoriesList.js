@@ -4,7 +4,7 @@ import { pipe, trim, toLower } from "ramda";
 import UserSettingsContext, {
     SETTINGS,
 } from "../../../contexts/UserSettingsContext";
-import css from "./StoriesList.module.css"
+import css from "./StoriesList.module.css";
 
 const normalizeStr = pipe((str) => str.substring(0, 10), trim, toLower);
 

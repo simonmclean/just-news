@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import css from './StoryCard.module.css'
+import css from "./StoryCard.module.css";
 
 const secureURL = (url) => url.replace("http://", "https://");
 
@@ -21,7 +21,9 @@ export default function StoryCard({ story, showImage }) {
                         <a className={css.citeLink}>{story.source.name}</a>
                     </Link>
                 </cite>
-                <time className={css.dateTime} dateTime={story.publishedAt}>{story.relativeTime}</time>
+                <time className={css.dateTime} dateTime={story.publishedAt}>
+                    {story.relativeTime}
+                </time>
                 <h3 className={css.title}>
                     <a
                         className={css.title}

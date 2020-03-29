@@ -9,5 +9,5 @@ export function isoAbortController() {
 
 export function upperFirst(str) {
     const [firstLetter, ...rest] = str;
-    return [firstLetter.toUpperCase(), ...rest].join('')
+    return [firstLetter.toUpperCase(), ...rest].join("");
 }

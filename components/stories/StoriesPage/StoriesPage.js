@@ -8,7 +8,7 @@ import RequestLogContext, {
 } from "../../../contexts/RequestLogContext";
 import MessageContext from "../../../contexts/MessageContext";
 import useScrollPos from "../../../hooks/useScrollPos";
-import css from './StoriesPage.module.css';
+import css from "./StoriesPage.module.css";
 
 export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
     const pathName = useRouter().asPath;

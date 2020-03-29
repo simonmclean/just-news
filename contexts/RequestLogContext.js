@@ -6,9 +6,9 @@ const SECONDS_TO_EXPIRE = 600; // 10 minutes
 function isRecordValid(record) {
     // TODO: Type validation
     return equals(
-        ['route', 'dependancies', 'data', 'totalResults', 'page'],
+        ["route", "dependancies", "data", "totalResults", "page"],
         Object.keys(record)
-    )
+    );
 }
 
 export function requestLogReducer(log, record) {
@@ -22,7 +22,7 @@ export function requestLogReducer(log, record) {
             },
         };
     } else {
-        throw new Error('Attempting to log an invalid record:', record);
+        throw new Error("Attempting to log an invalid record:", record);
     }
 }
 
