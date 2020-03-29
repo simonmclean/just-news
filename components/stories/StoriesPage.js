@@ -1,4 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, {
+    useEffect,
+    useState,
+    useContext,
+    useCallback,
+} from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import StoriesList from '../../components/stories/StoriesList'
@@ -41,8 +46,8 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
         }
     }, [loadMore, totalResults, stories.length, loading])
 
-    function fetchData(page = 1) {
-        requestFn(dependancy, page)
+    const fetchData = useCallback(
+        (page = 1) => requestFn(dependancy, page)
             .fire()
             .then(response => {
                 const accumulatedStories = page > 1
@@ -62,7 +67,15 @@ export default function StoriesPage({ pageTitle, dependancy, requestFn }) {
                 sendMessage('Error retrieving stories')
                 console.error(err)
             })
-    }
+         , [
+             dependancy,
+             logRequest,
+             pathName,
+             requestFn,
+             sendMessage,
+             stories
+        ]
+    )
 
     function loadMore() {
         setLoading(true)
