@@ -3,24 +3,13 @@ import { equals } from 'ramda'
 
 const SECONDS_TO_EXPIRE = 600 // 10 minutes
 
-// TODO: Use a library for managing time?
-
 export function requestLogReducer(log, record) {
-    const {
-        route,
-        dependancies,
-        data,
-        totalResults,
-        page
-    } = record
+    const { route, ...rest } = record
     return {
         ...log,
         [route]: {
             lastRequestTime: Math.round(Date.now() / 1000),
-            dependancies,
-            data,
-            totalResults,
-            page,
+            ...rest,
         }
     }
 }
