@@ -25,6 +25,11 @@ module.exports = {
         "react-hooks"
     ],
     "rules": {
-        "react/prop-types": false
+        "react/prop-types": 0
+    },
+    "settings": {
+        "react": {
+            "version": "detect",
+        },
     },
 };
