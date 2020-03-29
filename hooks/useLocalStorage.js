@@ -15,7 +15,7 @@ export default function useLocalStorage(key, defaultValue) {
                 }
                 setValue(cachedValue ? cachedValue : defaultValue)
             })
-    }, [key])
+    }, [defaultValue, key])
 
     return [
         value,

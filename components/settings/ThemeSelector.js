@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import UserSettingsContext, { SETTINGS } from '../../contexts/UserSettingsContext'
 
 const THEME_OPTIONS = Object.freeze([

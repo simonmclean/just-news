@@ -17,5 +17,5 @@ export default function useScrollPos(callback, deps) {
         )
 
         return () => window.removeEventListener('scroll', handleScroll)
-    }, [...deps, callback])
+    }, [deps, callback])
 }

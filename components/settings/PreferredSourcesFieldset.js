@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import SourcesContext from  '../../contexts/SourcesContext'
 import UserSettingsContext, { SETTINGS } from  '../../contexts/UserSettingsContext'
 

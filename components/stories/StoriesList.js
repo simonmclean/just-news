@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import StoryCard from './StoryCard'
 import { pipe, trim, toLower } from 'ramda'
 import UserSettingsContext, { SETTINGS } from '../../contexts/UserSettingsContext'

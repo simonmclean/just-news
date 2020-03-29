@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 
 const secureURL = url => url.replace('http://', 'https://')
@@ -19,6 +20,7 @@ export default function StoryCard({ story, showImage }) {
                 <a
                     href={secureURL(story.url)}
                     target='_blank'
+                    rel='noopener noreferrer'
                 >
                     {story.title}
                 </a>

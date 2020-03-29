@@ -1,5 +1,5 @@
+import React, { useContext } from 'react'
 import Link from 'next/link'
-import { useContext } from 'react'
 import SourcesContext from '../../contexts/SourcesContext'
 import UserSettingsContext from '../../contexts/UserSettingsContext'
 
