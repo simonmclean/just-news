@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import StoriesList from "./StoriesList/StoriesList";
+import SourcesNav from "../../sources/SourcesNav";
+import StoriesList from "../StoriesList/StoriesList";
 import RequestLogContext, {
     isRequestStale,
-} from "../../contexts/RequestLogContext";
-import MessageContext from "../../contexts/MessageContext";
-import useScrollPos from "../../hooks/useScrollPos";
+} from "../../../contexts/RequestLogContext";
+import MessageContext from "../../../contexts/MessageContext";
+import useScrollPos from "../../../hooks/useScrollPos";
+import css from './StoriesPage.module.css';
 
 export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
     const pathName = useRouter().asPath;
@@ -82,7 +84,8 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
                 <title>{pageTitle} | Just News</title>
             </Head>
             <main>
-                <h1>{pageTitle}</h1>
+                <h1 className={css.title}>{pageTitle}</h1>
+                <SourcesNav />
                 <StoriesList stories={stories} />
                 {loading && <p>Loading stories…</p>}
             </main>

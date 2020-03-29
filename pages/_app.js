@@ -21,7 +21,7 @@ import RequestLogContext, {
 } from "../contexts/RequestLogContext";
 
 // Components
-import Navigation from "../components/header/Navigation";
+import Navigation from "../components/header/AppHeader";
 import Message from "../components/message/Message";
 
 // Utils

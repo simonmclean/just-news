@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import CategoryNav from "../categories/CategoryNav";
-import SourcesNav from "../sources/SourcesNav";
 
 export default function Header() {
     return (
@@ -10,7 +9,6 @@ export default function Header() {
                 <a>Settings</a>
             </Link>
             <CategoryNav />
-            <SourcesNav />
         </>
     );
 }

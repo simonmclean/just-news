@@ -1,0 +1,23 @@
+.nav {
+    padding: 0 var(--spacer);
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+}
+
+.listItem + .listItem {
+    margin-left: var(--spacer);
+}
+
+.link {
+    display: block;
+    font-size: var(--font-size-small);
+    white-space: nowrap;
+    padding: var(--spacer) 0;
+    text-decoration: none;
+}

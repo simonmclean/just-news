@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import SourcesContext from "../../contexts/SourcesContext";
 import UserSettingsContext from "../../contexts/UserSettingsContext";
+import css from "./SourcesNav.module.css";
 
 export default function SourcesNav() {
     const { preferredSources } = useContext(UserSettingsContext);
@@ -11,15 +12,15 @@ export default function SourcesNav() {
     );
 
     return (
-        <nav>
-            <ul>
+        <nav className={css.nav}>
+            <ul className={css.list}>
                 {sources.map((source) => (
-                    <li key={source.id}>
+                    <li key={source.id} className={css.listItem}>
                         <Link
                             href="/source/[sourceId]"
                             as={`/source/${source.id}`}
                         >
-                            <a>{source.name}</a>
+                            <a className={css.link}>{source.name}</a>
                         </Link>
                     </li>
                 ))}
