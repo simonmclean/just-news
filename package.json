@@ -1,26 +1,27 @@
 {
-  "name": "just-news",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "lazy-image": "git+https://github.com/simonmclean/lazy-img.git",
-    "lit-element": "^2.3.1",
-    "localforage": "^1.7.3",
-    "next": "9.3.1",
-    "next-offline": "^5.0.0",
-    "ramda": "^0.27.0",
-    "react": "16.13.0",
-    "react-dom": "16.13.0"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^3.0.0"
-  }
+    "name": "just-news",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "npx eslint components/** hooks/** contexts/** utils/** pages/**"
+    },
+    "dependencies": {
+        "lazy-image": "git+https://github.com/simonmclean/lazy-img.git",
+        "lit-element": "^2.3.1",
+        "localforage": "^1.7.3",
+        "next": "9.3.1",
+        "next-offline": "^5.0.0",
+        "ramda": "^0.27.0",
+        "react": "16.13.0",
+        "react-dom": "16.13.0"
+    },
+    "devDependencies": {
+        "dotenv": "^8.2.0",
+        "eslint": "^6.8.0",
+        "eslint-plugin-react": "^7.19.0",
+        "eslint-plugin-react-hooks": "^3.0.0"
+    }
 }

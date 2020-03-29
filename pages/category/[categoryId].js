@@ -1,4 +1,5 @@
-import React, { useRouter } from 'next/router'
+import React from 'react'
+import { useRouter } from 'next/router'
 import { getStoriesByCategory } from '../../utils/requestUtils'
 import StoriesPage from '../../components/stories/StoriesPage'
 
