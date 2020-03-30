@@ -1,0 +1,29 @@
+.header {
+    position: sticky;
+    top: 0;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+    background-color: var(--app-background-color);
+    margin-bottom: var(--spacer);
+}
+
+.headerTop {
+    position: relative;
+    padding: var(--spacer) 0;
+}
+
+.title {
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+}
+
+.settings {
+    position: absolute;
+    top: var(--spacer);
+    right: var(--spacer);
+}
+
+.nav {
+    display: block;
+}
+

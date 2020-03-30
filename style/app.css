@@ -2,15 +2,23 @@
     /* Base colours */
     --grey: #E3E3E3;
     --black: #424951;
+    --white: white;
     --green: #1fb5a0;
+    --pink: #b834bc;
 
     /* Applied colours */
     --brand-color: var(--green);
+    --secondary-color: var(--pink);
+    --app-background-color: var(--white);
     --border-color: var(--grey);
     --text-color: var(--black);
 
+    /* Sizing */
     --spacer: 1rem;
     --font-size-small: 0.8rem;
+
+    /* Animation */
+    --quick-transition: 0.3s;
 }
 
 *,
@@ -28,5 +36,5 @@ body {
 }
 
 a {
-    color: var(--brand-color);
+    color: var(--text-color);
 }

@@ -21,6 +21,7 @@ const ENDPOINTS = {
  * @returns {string} - URL
  */
 function buildURL(endpoint, params) {
+    // IODO: Use the Web URL API instead concating strings like a caveman
     return (
         "https://newsapi.org/v2/" +
         endpoint +

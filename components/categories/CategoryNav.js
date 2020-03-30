@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import css from "./CategoryNav.module.css";
 
 const CATEGORIES = Object.freeze([
     "general",
@@ -11,22 +13,35 @@ const CATEGORIES = Object.freeze([
     "health",
 ]);
 
-export default function CategoryNav() {
+export default function CategoryNav({ className }) {
+    const { query } = useRouter();
+
+    const isActiveClass = (categoryId) =>
+        categoryId === query.categoryId ? css.linkActive : null;
+
     return (
-        <nav>
-            <ul>
-                <li>
+        <nav className={`${className} ${css.nav}`}>
+            <ul className={css.list}>
+                <li className={css.listItem}>
                     <Link href="/">
-                        <a>My News</a>
+                        <a className={`${css.link} ${isActiveClass()}`}>
+                            My News
+                        </a>
                     </Link>
                 </li>
                 {CATEGORIES.map((category) => (
-                    <li key={category}>
+                    <li key={category} className={css.listItem}>
                         <Link
                             href="/category/[categoryId]"
                             as={`/category/${category}`}
                         >
-                            <a>{category}</a>
+                            <a
+                                className={`${css.link} ${isActiveClass(
+                                    category
+                                )}`}
+                            >
+                                {category}
+                            </a>
                         </Link>
                     </li>
                 ))}

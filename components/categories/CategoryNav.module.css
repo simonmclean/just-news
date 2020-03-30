@@ -1,0 +1,27 @@
+.nav {
+    overflow-x: auto;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.listItem {
+    white-space: nowrap;
+}
+
+.link {
+    display: inline-block;
+    text-decoration: none;
+    padding: calc(var(--spacer) * 0.75);
+    text-transform: uppercase;
+    font-size: var(--font-size-small);
+    border-bottom: 2px solid transparent;
+}
+
+.linkActive {
+    border-color: var(--black);
+}

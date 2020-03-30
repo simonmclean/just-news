@@ -23,6 +23,13 @@
     text-decoration: none;
     font-style: normal;
     margin-right: var(--spacer);
+    color: var(--brand-color);
+    transition: color var(--short-transition);
+}
+
+.citeLink:hover,
+.citeLink:focus {
+    color: var(--secondary-color);
 }
 
 .dateTime {
