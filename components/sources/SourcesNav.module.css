@@ -20,4 +20,10 @@
     white-space: nowrap;
     padding: var(--spacer) 0;
     text-decoration: none;
+    transition: color var(--quick-transition);
+}
+
+.link:hover,
+.link:focus {
+    color: var(--brand-color);
 }

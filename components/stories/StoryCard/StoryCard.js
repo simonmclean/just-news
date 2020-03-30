@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import css from "./StoryCard.module.css";
 
 const secureURL = (url) => url.replace("http://", "https://");
@@ -13,14 +12,7 @@ export default function StoryCard({ story, showImage }) {
                 </lazy-img>
             )}
             <header>
-                <cite>
-                    <Link
-                        href="/source/[sourceId]"
-                        as={`/source/${story.author}`}
-                    >
-                        <a className={css.citeLink}>{story.source.name}</a>
-                    </Link>
-                </cite>
+                <cite className={css.source}>{story.source.name}</cite>
                 <time className={css.dateTime} dateTime={story.publishedAt}>
                     {story.relativeTime}
                 </time>

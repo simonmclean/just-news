@@ -76,7 +76,7 @@ export default function MyApp({ Component }) {
                     content="width=device-width, initial-scale=1"
                 />
             </Head>
-            {userSettings && (
+            {sources.length && userSettings && (
                 <SourcesContext.Provider value={sources}>
                     <RequestLogContext.Provider
                         value={[requestLog, logRequest]}

@@ -4,6 +4,8 @@ import UserSettingsContext, {
     SETTINGS,
 } from "../../contexts/UserSettingsContext";
 
+// TODO: Introduce "Blacklist" option that blocks sources from
+// being shown in any categories
 export default function PreferredSourcesFieldset() {
     const sources = useContext(SourcesContext);
     const { preferredSources, setUserSetting } = useContext(

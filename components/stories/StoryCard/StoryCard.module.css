@@ -14,22 +14,14 @@
     text-decoration: none;
 }
 
-.citeLink,
+.source,
 .dateTime {
     font-size: var(--font-size-small);
 }
 
-.citeLink {
-    text-decoration: none;
-    font-style: normal;
+.source {
     margin-right: var(--spacer);
-    color: var(--brand-color);
-    transition: color var(--short-transition);
-}
-
-.citeLink:hover,
-.citeLink:focus {
-    color: var(--secondary-color);
+    font-style: normal;
 }
 
 .dateTime {
