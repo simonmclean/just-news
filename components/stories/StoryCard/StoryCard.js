@@ -15,7 +15,7 @@ export default function StoryCard({ story, showImage }) {
                 {story.relativeTime}
             </time>
         </div>
-    )
+    );
 
     return (
         <article className={wrapperClass}>
@@ -23,7 +23,11 @@ export default function StoryCard({ story, showImage }) {
                 <>
                     {renderAttribution()}
                     <lazy-img src={secureURL(story.urlToImage)}>
-                        <img className={css.image} loading="lazy" alt={story.title} />
+                        <img
+                            className={css.image}
+                            loading="lazy"
+                            alt={story.title}
+                        />
                     </lazy-img>
                 </>
             )}

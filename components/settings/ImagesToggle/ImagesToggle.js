@@ -9,6 +9,7 @@ export default function ImagesToggle({ className }) {
 
     const onChange = () => setUserSetting(SETTINGS.SHOW_IMAGES, !showImages);
 
+    // TODO: Use toggle switch input of checkbox
     return (
         <div className={className}>
             <label className={css.label}>

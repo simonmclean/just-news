@@ -1,5 +1,5 @@
 .card {
-    border: 1px solid var(--grey);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: var(--spacer);
 }
@@ -65,4 +65,10 @@
 .cardWithImage .header,
 .cardWithImage .section {
     grid-column: 2;
+}
+
+/* Dark theme */
+[data-theme="dark"] .description,
+[data-theme="dark"] .sourceTime {
+    opacity: 0.7;
 }

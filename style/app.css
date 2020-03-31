@@ -1,7 +1,9 @@
 :root {
     /* Base colours */
     --grey: #E3E3E3;
-    --black: #424951;
+    --grey-light: #eaeaea;
+    --grey-dark: #424951;
+    --black: #222;
     --white: white;
     --green: #1fb5a0;
     --pink: #b834bc;
@@ -11,7 +13,7 @@
     --secondary-color: var(--pink);
     --app-background-color: var(--white);
     --border-color: var(--grey);
-    --text-color: var(--black);
+    --text-color: var(--grey-dark);
 
     /* Sizing */
     --spacer: 1rem;
@@ -22,6 +24,12 @@
 
     /* Shadow */
     --box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] {
+    --app-background-color: var(--black);
+    --text-color: var(--grey-light);
+    --border-color: var(--grey-dark);
 }
 
 *,
@@ -36,6 +44,7 @@ body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
     line-height: 1.5;
     color: var(--text-color);
+    background-color: var(--app-background-color);
 }
 
 a {
