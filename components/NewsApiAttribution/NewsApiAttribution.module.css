@@ -1,0 +1,8 @@
+.attribution {
+    font-size: var(--font-size-small);
+    opacity: var(--soft-text-opacity);
+}
+
+.attribution a {
+    text-decoration: none;
+}
