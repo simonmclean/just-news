@@ -84,7 +84,7 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
                 <title>{pageTitle} | Just News</title>
             </Head>
             <main>
-                <h1 className={css.title}>{pageTitle}</h1>
+                <h2 className={css.title}>{pageTitle}</h2>
                 {pathName === "/" && <SourcesNav />}
                 <StoriesList stories={stories} />
                 {loading && <p className={css.loadingText}>Loading stories…</p>}

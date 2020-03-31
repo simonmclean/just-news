@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { MdSettings, MdArrowBack } from 'react-icons/md';
+import { MdSettings, MdArrowBack } from "react-icons/md";
 import CategoryNav from "../categories/CategoryNav";
 import css from "./AppHeader.module.css";
 
 export default function Header() {
     const isSettingsRoute = useRouter().route === "/settings";
+    const pageTitle = isSettingsRoute ? "Settings" : "Just News";
 
     return (
         <header className={css.header}>
@@ -19,7 +20,7 @@ export default function Header() {
                         </a>
                     </Link>
                 )}
-                <h1 className={css.title}>Just News</h1>
+                <h1 className={css.title}>{pageTitle}</h1>
                 {!isSettingsRoute && (
                     <Link href="/settings">
                         <a className={css.settings}>
