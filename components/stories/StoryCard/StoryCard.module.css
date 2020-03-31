@@ -31,3 +31,38 @@
 .description {
     font-size: var(--font-size-small);
 }
+
+/* With image overrides */
+
+.cardWithImage {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 0 var(--spacer);
+}
+
+.cardWithImage .title {
+    margin-top: 0;
+}
+
+.cardWithImage lazy-img {
+    grid-column: 1;
+}
+
+.cardWithImage img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.cardWithImage .description {
+    margin-top: 0;
+}
+
+.cardWithImage .sourceTime {
+    grid-column: 1/3;
+    margin-bottom: var(--spacer);
+}
+
+.cardWithImage .header,
+.cardWithImage .section {
+    grid-column: 2;
+}
