@@ -19,6 +19,9 @@
 
     /* Animation */
     --quick-transition: 0.3s;
+
+    /* Shadow */
+    --box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
 }
 
 *,
@@ -37,4 +40,27 @@ body {
 
 a {
     color: var(--text-color);
+    transition: color var(--quick-transition);
+}
+
+a:focus,
+a:hover {
+    color: var(--brand-color);
+}
+
+.for-sr {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.for-sr:focus {
+    clip: auto;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    width: auto;
 }

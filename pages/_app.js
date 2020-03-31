@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 
 // Next
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 // Custom hooks
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -21,7 +20,7 @@ import RequestLogContext, {
 } from "../contexts/RequestLogContext";
 
 // Components
-import Navigation from "../components/header/AppHeader";
+import AppHeader from "../components/header/AppHeader";
 import Message from "../components/message/Message";
 
 // Utils
@@ -64,8 +63,6 @@ export default function MyApp({ Component }) {
         }
     }, [userSettings]);
 
-    const isSettingsRoute = useRouter().route === "/settings";
-
     // TODO: Reduce all the context providers
     return (
         <>
@@ -88,7 +85,7 @@ export default function MyApp({ Component }) {
                                 value={[message, sendMessage]}
                             >
                                 <Message />
-                                {!isSettingsRoute && <Navigation />}
+                                <AppHeader />
                                 <Component />
                             </MessageContext.Provider>
                         </UserSettingsContext.Provider>
