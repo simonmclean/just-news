@@ -6,8 +6,6 @@ const secureURL = (url) => url.replace("http://", "https://");
 export default function StoryCard({ story, showImage }) {
     const canShowImage = showImage && story.urlToImage;
 
-    const wrapperClass = `${css.card} ${canShowImage && css.cardWithImage}`;
-
     const renderAttribution = () => (
         <div className={css.sourceTime}>
             <cite className={css.source}>{story.source.name}</cite>
@@ -18,7 +16,7 @@ export default function StoryCard({ story, showImage }) {
     );
 
     return (
-        <article className={wrapperClass}>
+        <article className={canShowImage ? css.cardWithImage : ""}>
             {canShowImage && (
                 <>
                     {renderAttribution()}

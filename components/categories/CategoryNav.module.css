@@ -25,3 +25,7 @@
 .linkActive {
     border-color: var(--black);
 }
+
+[data-theme="dark"] .linkActive {
+    border-color: var(--grey);
+}

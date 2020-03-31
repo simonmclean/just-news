@@ -18,6 +18,7 @@
     /* Sizing */
     --spacer: 1rem;
     --font-size-small: 0.8rem;
+    --content-max-width: 66rem;
 
     /* Animation */
     --quick-transition: 0.3s;
@@ -45,6 +46,12 @@ body {
     line-height: 1.5;
     color: var(--text-color);
     background-color: var(--app-background-color);
+}
+
+main {
+    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a {
