@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
-import SourcesContext from "../../contexts/SourcesContext";
+import SourcesContext from "../../../contexts/SourcesContext";
 import UserSettingsContext, {
     SETTINGS,
-} from "../../contexts/UserSettingsContext";
+} from "../../../contexts/UserSettingsContext";
+import css from "./PreferredSourcesFieldset.module.css";
 
 // TODO: Introduce "Blacklist" option that blocks sources from
 // being shown in any categories
-export default function PreferredSourcesFieldset() {
+export default function PreferredSourcesFieldset({ className }) {
     const sources = useContext(SourcesContext);
     const { preferredSources, setUserSetting } = useContext(
         UserSettingsContext
@@ -21,17 +22,20 @@ export default function PreferredSourcesFieldset() {
     }
 
     return (
-        <fieldset>
-            <legend>Preferred Sources</legend>
-            <ol>
+        <fieldset className={`${className} ${css.fieldset}`}>
+            <div className={css.legendWrapper}>
+                <legend>Preferred Sources</legend>
+            </div>
+            <ol className={css.list}>
                 {sources.map((source) => (
                     <li key={source.id}>
-                        <label>
+                        <label className={css.label}>
                             <input
                                 type="checkbox"
                                 value={source.id}
                                 checked={preferredSources.includes(source.id)}
                                 onChange={onCheckboxChange}
+                                className={css.checkbox}
                             />
                             {source.name}
                         </label>

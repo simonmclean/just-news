@@ -4,6 +4,7 @@
     box-shadow: var(--box-shadow);
     background-color: var(--app-background-color);
     margin-bottom: var(--spacer);
+    z-index: 2;
 }
 
 .headerTop {

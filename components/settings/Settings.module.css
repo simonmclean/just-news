@@ -1,0 +1,7 @@
+.field {
+    padding: var(--spacer);
+}
+
+.field + .field {
+    border-top: 1px solid var(--border-color);
+}
