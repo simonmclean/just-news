@@ -14,6 +14,7 @@
     --app-background-color: var(--white);
     --border-color: var(--grey);
     --text-color: var(--grey-dark);
+    --soft-text-opacity: 0.7;
 
     /* Sizing */
     --spacer: 1rem;

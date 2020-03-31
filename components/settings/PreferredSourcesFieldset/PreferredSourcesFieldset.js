@@ -3,6 +3,7 @@ import SourcesContext from "../../../contexts/SourcesContext";
 import UserSettingsContext, {
     SETTINGS,
 } from "../../../contexts/UserSettingsContext";
+import NewsApiAttribution from "../../NewsApiAttribution/NewsApiAttribution";
 import css from "./PreferredSourcesFieldset.module.css";
 
 // TODO: Introduce "Blacklist" option that blocks sources from
@@ -24,7 +25,8 @@ export default function PreferredSourcesFieldset({ className }) {
     return (
         <fieldset className={`${className} ${css.fieldset}`}>
             <div className={css.legendWrapper}>
-                <legend>Preferred Sources</legend>
+                <legend className={css.legend}>Preferred Sources</legend>
+                <NewsApiAttribution />
             </div>
             <ol className={css.list}>
                 {sources.map((source) => (

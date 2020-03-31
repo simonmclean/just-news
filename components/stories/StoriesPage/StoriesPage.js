@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import SourcesNav from "../../sources/SourcesNav";
 import StoriesList from "../StoriesList/StoriesList";
+import NewsApiAttribution from "../../NewsApiAttribution/NewsApiAttribution";
 import RequestLogContext, {
     isRequestStale,
 } from "../../../contexts/RequestLogContext";
@@ -85,6 +86,7 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
             </Head>
             <main>
                 <h2 className={css.title}>{pageTitle}</h2>
+                <NewsApiAttribution className={css.attribution} />
                 {pathName === "/" && <SourcesNav />}
                 <StoriesList stories={stories} />
                 {loading && <p className={css.loadingText}>Loading stories…</p>}

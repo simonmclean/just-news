@@ -65,5 +65,5 @@
 /* Dark theme */
 [data-theme="dark"] .description,
 [data-theme="dark"] .sourceTime {
-    opacity: 0.7;
+    opacity: var(--soft-text-opacity);
 }

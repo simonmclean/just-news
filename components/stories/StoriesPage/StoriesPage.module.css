@@ -5,6 +5,10 @@
     text-transform: capitalize;
 }
 
+.attribution {
+    padding: 0 var(--spacer);
+}
+
 .loadingText {
     text-align: center;
     font-size: var(--font-size-small);
