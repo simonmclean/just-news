@@ -36,6 +36,7 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
         }
     }, [fetchDataHandler, pageDeps, prevDependacy, lastRequestTime, log.data]);
 
+    // TODO: This is too fragile. Maybe use an Intersection Observer instead
     useScrollPos(
         (scrollPos) => {
             const atBottom =
@@ -89,6 +90,7 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
                 <NewsApiAttribution className={css.attribution} />
                 {pathName === "/" && <SourcesNav />}
                 <StoriesList stories={stories} />
+                {/* TODO: Maybe use something like a "toast" component instead */}
                 {loading && <p className={css.loadingText}>Loading stories…</p>}
             </main>
         </>

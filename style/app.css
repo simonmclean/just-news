@@ -26,6 +26,9 @@
 
     /* Shadow */
     --box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+
+    /* Border */
+    --border-radius: 6px;
 }
 
 [data-theme="dark"] {
