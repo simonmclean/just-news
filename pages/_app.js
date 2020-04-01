@@ -63,6 +63,8 @@ export default function MyApp({ Component }) {
         }
     }, [userSettings]);
 
+    const appReady = !!sources.length && !!userSettings;
+
     // TODO: Reduce all the context providers
     return (
         <>
@@ -73,7 +75,7 @@ export default function MyApp({ Component }) {
                     content="width=device-width, initial-scale=1"
                 />
             </Head>
-            {sources.length && userSettings && (
+            {appReady && (
                 <SourcesContext.Provider value={sources}>
                     <RequestLogContext.Provider
                         value={[requestLog, logRequest]}
