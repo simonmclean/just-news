@@ -81,6 +81,7 @@ export default function MyApp({ Component }) {
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
+                <meta name="robots" content="noindex" />
             </Head>
             {appReady && (
                 <SourcesContext.Provider value={sources}>
