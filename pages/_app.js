@@ -29,6 +29,10 @@ import { getSources } from "../utils/requestUtils.js";
 // CSS
 import "../style/app.css";
 
+// TODO: Meta description and robots
+// TODO: Copyright
+// TODO: Error page
+// TODO: Generic integration of other news APIs
 export default function MyApp({ Component }) {
     const [sources, setSources] = useState([]);
     const [requestLog, setRequestLog] = useState({});
@@ -43,6 +47,8 @@ export default function MyApp({ Component }) {
         setUserSettings(newState);
     }
 
+    // TODO: Maybe add the request log to the cache?
+    // Improves load time and reduces the number of API calls
     function logRequest(record) {
         const newLog = requestLogReducer(requestLog, record);
         setRequestLog(newLog);
@@ -70,6 +76,7 @@ export default function MyApp({ Component }) {
         <>
             <Head>
                 <script type="module" src="/lazy-image-component.js"></script>
+                <script type="module" src="/toggle-switch-component.js"></script>
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"

@@ -36,7 +36,7 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
         }
     }, [fetchDataHandler, pageDeps, prevDependacy, lastRequestTime, log.data]);
 
-    // TODO: This is too fragile. Maybe use an Intersection Observer instead
+    // TODO: Is this too fragile? Maybe use an Intersection Observer instead
     useScrollPos(
         (scrollPos) => {
             const atBottom =
@@ -80,6 +80,9 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
         fetchDataHandler(currentPage + 1);
     }
 
+    // TODO: Show stories count next to page title
+    // TODO: Make loading text more visible (toast?)
+    // TODO: Show message when there are no more stories no load
     return (
         <>
             <Head>
@@ -90,7 +93,6 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
                 <NewsApiAttribution className={css.attribution} />
                 {pathName === "/" && <SourcesNav />}
                 <StoriesList stories={stories} />
-                {/* TODO: Maybe use something like a "toast" component instead */}
                 {loading && <p className={css.loadingText}>Loading stories…</p>}
             </main>
         </>
