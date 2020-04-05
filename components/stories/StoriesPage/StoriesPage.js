@@ -94,6 +94,7 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
                 {pathName === "/" && <SourcesNav />}
                 <StoriesList stories={stories} />
                 {loading && <p className={css.loadingText}>Loading stories…</p>}
+                {stories.length === totalResults && <p className={css.noMoreHeadlines}>No more stories</p>}
             </main>
         </>
     );

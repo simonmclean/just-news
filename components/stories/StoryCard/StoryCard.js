@@ -1,7 +1,6 @@
 import React from "react";
 import css from "./StoryCard.module.css";
 
-// TODO: Fix grid row issue, where the image is tall and the title short
 export default function StoryCard({ story, showImage }) {
     const canShowImage = showImage && story.urlToImage;
 

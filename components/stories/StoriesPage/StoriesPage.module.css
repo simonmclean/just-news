@@ -9,7 +9,9 @@
     padding: 0 var(--spacer);
 }
 
-.loadingText {
+.loadingText,
+.noMoreHeadlines {
     text-align: center;
     font-size: var(--font-size-small);
+    margin: var(--spacer) 0;
 }
