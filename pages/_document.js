@@ -29,6 +29,7 @@ class MyDocument extends Document {
                         content="Just News provides the latest headlines from sources you choose, without the algorithmic manipulation associated with social media feeds."
                     />
                     <meta name="theme-color" content="#1fb5a0" />
+                    <link rel="manifest" href="/manifest.json" />
                 </Head>
                 <body>
                     <noscript>

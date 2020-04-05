@@ -1,0 +1,26 @@
+{
+    "name": "Just News",
+    "short_name": "Just News",
+    "description": "Your news headlines",
+    "icons": [
+        {
+            "src": "/images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/jn-icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/?utm_source=homescreen",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1fb5a0"
+}
