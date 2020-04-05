@@ -81,7 +81,6 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
 
     // TODO: Show stories count next to page title
     // TODO: Make loading text more visible (toast?)
-    // TODO: Show message when there are no more stories no load
     return (
         <>
             <Head>
