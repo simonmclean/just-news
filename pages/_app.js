@@ -88,6 +88,7 @@ export default function MyApp({ Component }) {
                                 <Message />
                                 <AppHeader />
                                 <Component />
+                                <small className="copyright">© 2020 Simon Mclean</small>
                             </MessageContext.Provider>
                         </UserSettingsContext.Provider>
                     </RequestLogContext.Provider>

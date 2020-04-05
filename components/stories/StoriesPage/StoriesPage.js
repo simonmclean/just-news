@@ -64,7 +64,6 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
                         totalResults: response.totalResults,
                         page,
                     });
-                    setStories(accumulatedStories);
                     setLoading(false);
                 })
                 .catch((err) => {
