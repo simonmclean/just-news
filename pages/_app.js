@@ -74,15 +74,6 @@ export default function MyApp({ Component }) {
     // TODO: Reduce all the context providers
     return (
         <>
-            <Head>
-                <script type="module" src="/lazy-image-component.js"></script>
-                <script type="module" src="/toggle-switch-component.js"></script>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <meta name="robots" content="noindex" />
-            </Head>
             {appReady && (
                 <SourcesContext.Provider value={sources}>
                     <RequestLogContext.Provider
