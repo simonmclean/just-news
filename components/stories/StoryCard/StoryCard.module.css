@@ -32,6 +32,7 @@
 .cardWithImage {
     display: grid;
     grid-template-columns: minmax(100px, 25%);
+    grid-template-rows: min-content min-content 1fr;
     gap: 0 var(--spacer);
 }
 
@@ -39,8 +40,9 @@
     margin-top: 0;
 }
 
-.cardWithImage lazy-img {
+.cardWithImage .imageWrapper {
     grid-column: 1;
+    grid-row: 2/4;
 }
 
 .cardWithImage img {

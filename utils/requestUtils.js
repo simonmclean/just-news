@@ -12,6 +12,8 @@ const ENDPOINTS = {
     HEADLINES: "top-headlines",
 };
 
+const secureURL = (url) => url.replace("http://", "https://");
+
 /**
  * Takes an endpoint name, and an params obj
  * and constructs a complete URL for an API call
@@ -21,7 +23,7 @@ const ENDPOINTS = {
  * @returns {string} - URL
  */
 function buildURL(endpoint, params) {
-    // IODO: Use the Web URL API instead concating strings like a caveman
+    // TODO: Use the Web URL API instead concating strings like a caveman
     return (
         "https://newsapi.org/v2/" +
         endpoint +
@@ -56,6 +58,10 @@ const getRelativeTime = pipe(
 function normalizeStory(story) {
     return {
         ...story,
+        url: secureURL(story.url),
+        urlToImage: story.urlToImage
+            ? secureURL(story.urlToImage)
+            : null,
         relativeTime: getRelativeTime(story),
     };
 }

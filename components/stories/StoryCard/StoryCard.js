@@ -1,8 +1,6 @@
 import React from "react";
 import css from "./StoryCard.module.css";
 
-const secureURL = (url) => url.replace("http://", "https://");
-
 // TODO: Fix grid row issue, where the image is tall and the title short
 export default function StoryCard({ story, showImage }) {
     const canShowImage = showImage && story.urlToImage;
@@ -21,13 +19,19 @@ export default function StoryCard({ story, showImage }) {
             {canShowImage && (
                 <>
                     {renderAttribution()}
-                    <lazy-img src={secureURL(story.urlToImage)}>
-                        <img
-                            className={css.image}
-                            loading="lazy"
-                            alt={story.title}
-                        />
-                    </lazy-img>
+                    <a
+                        className={css.imageWrapper}
+                        href={story.url}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <lazy-img src={story.urlToImage}>
+                            <img
+                                className={css.image}
+                                loading="lazy"
+                                alt={story.title}
+                            />
+                        </lazy-img>
+                    </a>
                 </>
             )}
             <header className={css.header}>
@@ -35,7 +39,7 @@ export default function StoryCard({ story, showImage }) {
                 <h3 className={css.title}>
                     <a
                         className={css.title}
-                        href={secureURL(story.url)}
+                        href={story.url}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
