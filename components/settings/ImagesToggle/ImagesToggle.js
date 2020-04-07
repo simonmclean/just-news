@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import UserSettingsContext, {
     SETTINGS,
 } from "../../../contexts/UserSettingsContext";
+import ToggleSwitch from "../../web-component-wrappers/ToggleSwitch";
 import css from "./ImagesToggle.module.css";
 
 export default function ImagesToggle({ className }) {
@@ -9,16 +10,11 @@ export default function ImagesToggle({ className }) {
 
     const onChange = () => setUserSetting(SETTINGS.SHOW_IMAGES, !showImages);
 
-    // TODO: Use toggle switch input of checkbox
     return (
         <div className={className}>
             <label className={css.label}>
                 <span className={css.labelText}>Show Images</span>
-                <input
-                    type="checkbox"
-                    checked={showImages}
-                    onChange={onChange}
-                />
+                <ToggleSwitch checked={showImages} onChange={onChange} />
             </label>
             <small className={css.smallPrint}>
                 Warning: Images are not optimised for mobile. Don&apos;t enable

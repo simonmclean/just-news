@@ -1,0 +1,16 @@
+.wrapper toggle-switch {
+    --toggle-switch-toggle-duration: 0.2s;
+
+    --toggle-switch-knob-color: var(--grey-dark);
+
+    --toggle-switch-track-color: var(--grey-light);
+    --toggle-switch-track-border: 1px solid var(--border-color);
+}
+
+.wrapper toggle-switch[checked] {
+    --toggle-switch-knob-color: var(--brand-color);
+}
+
+[data-theme="dark"] .wrapper toggle-switch {
+    --toggle-switch-track-border: none;
+}
