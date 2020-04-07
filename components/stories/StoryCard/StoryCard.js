@@ -4,7 +4,7 @@ import css from "./StoryCard.module.css";
 export default function StoryCard({ story, showImage }) {
     const canShowImage = showImage && story.urlToImage;
 
-    const renderAttribution = () => (
+    const attributionNodes = (
         <div className={css.sourceTime}>
             <cite className={css.source}>{story.source.name}</cite>
             <time className={css.dateTime} dateTime={story.publishedAt}>
@@ -17,7 +17,7 @@ export default function StoryCard({ story, showImage }) {
         <article className={canShowImage ? css.cardWithImage : ""}>
             {canShowImage && (
                 <>
-                    {renderAttribution()}
+                    {attributionNodes}
                     <a
                         className={css.imageWrapper}
                         href={story.url}
@@ -34,7 +34,7 @@ export default function StoryCard({ story, showImage }) {
                 </>
             )}
             <header className={css.header}>
-                {!canShowImage && renderAttribution()}
+                {!canShowImage && attributionNodes}
                 <h3 className={css.title}>
                     <a
                         className={css.title}
