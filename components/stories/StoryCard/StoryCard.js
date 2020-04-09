@@ -22,7 +22,8 @@ export default function StoryCard({ story, showImage }) {
                         className={css.imageWrapper}
                         href={story.url}
                         target="_blank"
-                        rel="noopener noreferrer">
+                        rel="noopener noreferrer"
+                    >
                         <lazy-img src={story.urlToImage}>
                             <img
                                 className={css.image}

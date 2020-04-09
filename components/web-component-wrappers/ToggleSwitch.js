@@ -1,4 +1,4 @@
-import { createElement, useRef, useEffect } from 'react';
+import { createElement, useRef, useEffect } from "react";
 import css from "./ToggleSwitch.module.css";
 
 // Creating a wrapper as web-components can't be controlled component
@@ -19,14 +19,11 @@ export default function ToggleSwitch({ checked, onChange }) {
 
     // Using JSX creates a presentional bug related to initial state
     return createElement(
-        'div',
+        "div",
         { className: css.wrapper },
-        createElement(
-            'toggle-switch',
-            {
-                ref: el,
-                ...(checked && { checked }),
-            }
-        ),
+        createElement("toggle-switch", {
+            ref: el,
+            ...(checked && { checked }),
+        })
     );
 }

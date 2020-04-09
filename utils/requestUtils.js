@@ -23,11 +23,11 @@ const secureURL = (url) => url.replace("http://", "https://");
  * @returns {string} - URL
  */
 function buildURL(endpoint, params) {
-    const url = new isoURL('https://newsapi.org');
+    const url = isoURL("https://newsapi.org");
     url.pathname = `/v2/${endpoint}`;
     url.search = objectToUrlParams({
         apiKey: API_KEY,
-        ...params
+        ...params,
     });
     return url.toString();
 }
@@ -59,9 +59,7 @@ function normalizeStory(story) {
     return {
         ...story,
         url: secureURL(story.url),
-        urlToImage: story.urlToImage
-            ? secureURL(story.urlToImage)
-            : null,
+        urlToImage: story.urlToImage ? secureURL(story.urlToImage) : null,
         relativeTime: getRelativeTime(story),
     };
 }
