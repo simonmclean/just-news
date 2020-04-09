@@ -1,9 +1,6 @@
 // React
 import React, { useState, useEffect } from "react";
 
-// Next
-import Head from "next/head";
-
 // Custom hooks
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -29,8 +26,6 @@ import { getSources } from "../utils/requestUtils.js";
 // CSS
 import "../style/app.css";
 
-// TODO: Meta description and robots
-// TODO: Copyright
 // TODO: Error page
 // TODO: Generic integration of other news APIs
 export default function MyApp({ Component }) {

@@ -1,10 +1,9 @@
-export function isoAbortController() {
-    return typeof window !== "undefined"
-        ? new AbortController()
-        : {
-              abort: () => {},
-              signal: {},
-          };
+function isBrowser() {
+    return typeof window !== "undefined";
+}
+
+export function isoURL(url) {
+    return isBrowser() ? new URL(url) : {};
 }
 
 export function upperFirst(str) {

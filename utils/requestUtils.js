@@ -1,6 +1,6 @@
 import { pipe, pair, path, apply } from "ramda";
 import { formatRelative, parseISO } from "date-fns";
-import { upperFirst } from "./functionUtils";
+import { upperFirst, isoURL } from "./functionUtils";
 
 // TODO: Remove
 const API_KEY = process.env.newsApiKey;
@@ -23,21 +23,21 @@ const secureURL = (url) => url.replace("http://", "https://");
  * @returns {string} - URL
  */
 function buildURL(endpoint, params) {
-    // TODO: Use the Web URL API instead concating strings like a caveman
-    return (
-        "https://newsapi.org/v2/" +
-        endpoint +
-        "?apiKey=" +
-        API_KEY +
-        objectToUrlParams(params)
-    );
+    const url = new isoURL('https://newsapi.org');
+    url.pathname = `/v2/${endpoint}`;
+    url.search = objectToUrlParams({
+        apiKey: API_KEY,
+        ...params
+    });
+    return url.toString();
 }
 
 function objectToUrlParams(obj) {
-    return Object.entries(obj).reduce(
-        (acc, [param, value]) => `${acc}&${param}=${value}`,
-        ""
-    );
+    const params = new URLSearchParams();
+    Object.entries(obj).forEach(([param, value]) => {
+        params.set(param, value);
+    });
+    return params.toString();
 }
 
 /**

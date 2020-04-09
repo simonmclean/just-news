@@ -3,7 +3,6 @@ import { MdClose } from "react-icons/md";
 import MessageContext from "../../contexts/MessageContext";
 import css from "./Message.module.css";
 
-// TODO: Styling
 export default function Message() {
     const [message, setMessage] = useContext(MessageContext);
 

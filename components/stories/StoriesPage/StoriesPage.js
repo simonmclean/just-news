@@ -36,7 +36,6 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
         }
     }, [fetchDataHandler, pageDeps, prevDependacy, lastRequestTime, log.data]);
 
-    // TODO: Is this too fragile? Maybe use an Intersection Observer instead
     useScrollPos(
         (scrollPos) => {
             const atBottom =
@@ -80,7 +79,6 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
     }
 
     // TODO: Show stories count next to page title
-    // TODO: Make loading text more visible (toast?)
     return (
         <>
             <Head>
