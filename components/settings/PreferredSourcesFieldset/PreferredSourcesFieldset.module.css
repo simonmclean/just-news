@@ -21,12 +21,6 @@
     list-style: none;
 }
 
-.label {
-    display: flex;
-    align-items: center;
-    padding: calc(var(--spacer) * 0.25) 0;
-}
-
 .checkbox {
-    margin-right: var(--spacer);
+    padding: calc(var(--spacer) * 0.25) 0;
 }

@@ -4,6 +4,7 @@ import UserSettingsContext, {
     SETTINGS,
 } from "../../../contexts/UserSettingsContext";
 import NewsApiAttribution from "../../NewsApiAttribution/NewsApiAttribution";
+import Checkbox from "../../Checkbox/Checkbox";
 import css from "./PreferredSourcesFieldset.module.css";
 
 // TODO: Introduce "Blacklist" option that blocks sources from
@@ -31,16 +32,13 @@ export default function PreferredSourcesFieldset({ className }) {
             <ol className={css.list}>
                 {sources.map((source) => (
                     <li key={source.id}>
-                        <label className={css.label}>
-                            <input
-                                type="checkbox"
-                                value={source.id}
-                                checked={preferredSources.includes(source.id)}
-                                onChange={onCheckboxChange}
-                                className={css.checkbox}
-                            />
-                            {source.name}
-                        </label>
+                        <Checkbox
+                            value={source.id}
+                            label={source.name}
+                            checked={preferredSources.includes(source.id)}
+                            onChange={onCheckboxChange}
+                            className={css.checkbox}
+                        />
                     </li>
                 ))}
             </ol>
