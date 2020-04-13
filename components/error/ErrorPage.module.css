@@ -1,0 +1,7 @@
+.errorPage {
+    padding: var(--spacer);
+}
+
+.errorPage p:first-child {
+    margin-top: 0;
+}
