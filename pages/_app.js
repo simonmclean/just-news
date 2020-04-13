@@ -1,6 +1,9 @@
 // React
 import React, { useState, useEffect } from "react";
 
+// Next
+import { useRouter } from 'next/router';
+
 // Custom hooks
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -26,9 +29,9 @@ import { getSources } from "../utils/requestUtils.js";
 // CSS
 import "../style/app.css";
 
-// TODO: Error page
 // TODO: Generic integration of other news APIs
 export default function MyApp({ Component }) {
+    const router = useRouter();
     const [sources, setSources] = useState([]);
     const [requestLog, setRequestLog] = useState({});
     const [message, sendMessage] = useState();
@@ -48,6 +51,12 @@ export default function MyApp({ Component }) {
         const newLog = requestLogReducer(requestLog, record);
         setRequestLog(newLog);
     }
+
+    // First page load cannot be a dynamic route when app
+    // is served statically
+    useEffect(() => {
+        router.push("/");
+    }, []);
 
     useEffect(() => {
         getSources()
