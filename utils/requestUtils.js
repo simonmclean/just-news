@@ -5,7 +5,7 @@ import { upperFirst, isoURL } from "./functionUtils";
 // TODO: Remove
 const API_KEY = process.env.newsApiKey;
 
-export const PAGE_SIZE = 5;
+export const PAGE_SIZE = 50;
 
 const ENDPOINTS = {
     SOURCES: "sources",
