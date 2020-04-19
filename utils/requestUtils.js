@@ -64,7 +64,6 @@ function normalizeStory(story) {
     };
 }
 
-// TODO: Convert to async
 export function getSources() {
     const params = {
         language: "en",
@@ -74,7 +73,6 @@ export function getSources() {
         .then(({ sources }) => sources);
 }
 
-// TODO: Convert to async
 function getStories(params) {
     return fetch(buildURL(ENDPOINTS.HEADLINES, params))
         .then((response) => response.json())

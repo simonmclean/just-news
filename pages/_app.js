@@ -26,7 +26,6 @@ import { getSources } from "../utils/requestUtils.js";
 // CSS
 import "../style/app.css";
 
-// TODO: Use useSWR for data fetching and caching: https://swr.now.sh/
 // TODO: Generic integration of other news APIs
 export default function MyApp({ Component }) {
     const router = useRouter();
@@ -66,7 +65,6 @@ export default function MyApp({ Component }) {
 
     const appReady = !!sources.length && !!userSettings;
 
-    // TODO: Reduce all the context providers
     return (
         <>
             {appReady && (
