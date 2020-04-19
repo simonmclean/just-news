@@ -46,7 +46,8 @@ export default function MyApp({ Component }) {
     // is served statically
     useEffect(() => {
         router.push("/");
-    }, [router]);
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+    }, []);
 
     useEffect(() => {
         getSources()
