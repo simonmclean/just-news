@@ -17,7 +17,11 @@ export default function ThemeSelector({ className }) {
         <label className={`${className} ${css.wrapper}`}>
             <span className={css.labelText}>Theme</span>
             <div className={css.selectWrapper}>
-                <select className={css.select} value={theme} onChange={onChange}>
+                <select
+                    className={css.select}
+                    value={theme}
+                    onChange={onChange}
+                >
                     {THEME_OPTIONS.map((option) => (
                         <option value={option} key={option}>
                             {option}
