@@ -5,7 +5,7 @@ import { upperFirst, isoURL } from "./functionUtils";
 // TODO: Remove
 const API_KEY = process.env.newsApiKey;
 
-const PAGE_SIZE = 50;
+export const PAGE_SIZE = 5;
 
 const ENDPOINTS = {
     SOURCES: "sources",
@@ -81,6 +81,7 @@ function getStories(params) {
         .then(({ articles, totalResults }) => ({
             stories: articles.map(normalizeStory),
             totalResults,
+            params,
         }));
 }
 
