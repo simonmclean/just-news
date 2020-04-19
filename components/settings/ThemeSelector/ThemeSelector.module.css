@@ -3,6 +3,28 @@
     justify-content: space-between;
 }
 
+.selectWrapper {
+    position: relative;
+}
+
+.selectWrapper svg {
+   position: absolute;
+   right: 5px;
+   top: 0;
+   bottom: 0;
+   margin: auto;
+}
+
 .select {
+    -moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
     min-width: 10em;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-small);
+    padding: 5px;
+    text-transform: capitalize;
 }
