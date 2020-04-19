@@ -12,9 +12,11 @@ export default function Checkbox({
     onChange,
     className,
 }) {
-    const icon = checked
-        ? <CheckedIcon />
-        : <UncheckIcon className={css.uncheckedIcon}/>;
+    const icon = checked ? (
+        <CheckedIcon />
+    ) : (
+        <UncheckIcon className={css.uncheckedIcon} />
+    );
 
     return (
         <label className={`${css.label} ${className}`}>
