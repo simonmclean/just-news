@@ -46,7 +46,7 @@ export default function MyApp({ Component }) {
     // is served statically
     useEffect(() => {
         router.push("/");
-    }, []);
+    }, [router]);
 
     useEffect(() => {
         getSources()
