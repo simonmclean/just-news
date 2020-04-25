@@ -48,7 +48,10 @@ export default function StoryCard({ story, showImage }) {
                 </h3>
             </header>
             <section className={css.section}>
-                <p className={css.description}>{story.description}</p>
+                <p
+                    className={css.description}
+                    dangerouslySetInnerHTML={{ __html: story.description }}
+                />
             </section>
         </article>
     );

@@ -1,3 +1,4 @@
+import sanitizeHtml from "sanitize-html";
 import { pipe, pair, path, apply } from "ramda";
 import { formatRelative, parseISO } from "date-fns";
 import { upperFirst, isoURL } from "./functionUtils";
@@ -61,6 +62,7 @@ function normalizeStory(story) {
         url: secureURL(story.url),
         urlToImage: story.urlToImage ? secureURL(story.urlToImage) : null,
         relativeTime: getRelativeTime(story),
+        description: sanitizeHtml(story.description),
     };
 }
 
