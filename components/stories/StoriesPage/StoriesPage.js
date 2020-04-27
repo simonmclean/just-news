@@ -22,6 +22,8 @@ export default function StoriesPage({ pageTitle, pageDeps, fetchData }) {
         // "pages" component
         ({ offset, withSWR }) => {
             const { data, error } = withSWR(
+                // TODO: Re-enable linter on next line when this issue is resolved:
+                // https://github.com/zeit/swr/issues/133
                 // eslint-disable-next-line react-hooks/rules-of-hooks
                 useSWR(
                     [offset, pageDeps].flat(),
